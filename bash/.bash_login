@@ -1,0 +1,3 @@
+# Set vim mode on bash
+set editing-mode vi
+set -o vi
