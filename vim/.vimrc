@@ -1,5 +1,5 @@
 " Set syntax highlighting
-syntax enable
+syntax on 
 
 " Set improved mode
 set nocompatible
@@ -37,3 +37,6 @@ set expandtab
 " Set solarized colorscheme
 set background=dark
 colorscheme solarized
+
+" Enable pathogen
+execute pathogen#infect()
