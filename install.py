@@ -17,6 +17,12 @@ def install():
   shutil.copy(tmux_file, home_path)
   print('Done')
 
+  # VIM 
+  print('Installing vim configuration...', end='')
+  vim_file = 'vim/.vimrc'
+  shutil.copy(vim_file, home_path)
+  print('Done')
+
   print('All dotfiles installed!')
 
 if __name__=='__main__':
