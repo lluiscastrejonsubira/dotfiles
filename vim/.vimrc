@@ -1,3 +1,7 @@
+" Enable pathogen
+call pathogen#infect()
+call pathogen#helptags()
+
 " Set syntax highlighting
 syntax on 
 
@@ -5,7 +9,7 @@ syntax on
 set nocompatible
 
 " Establish autoindent automatically given a file extension
-filetype indent plugin on
+filetype plugin indent on
 
 " Use better cmd-line completition
 set wildmenu
@@ -30,13 +34,23 @@ set laststatus=2
 set number
 
 " Establish 4 space indentation
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " Set solarized colorscheme
 set background=dark
 colorscheme solarized
 
-" Enable pathogen
-execute pathogen#infect()
+
+""" PYTHON """
+" Highlight column overflow for python files
+augroup vimrc_autocmds
+      autocmd!
+      autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+      autocmd FileType python match Excess /\%79v.*/
+      autocmd FileType python set nowrap
+augroup END
+
+" Disable autocompletion on dot for jedi-vim
+let g:jedi#popup_on_dot = 0
