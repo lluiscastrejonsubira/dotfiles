@@ -48,6 +48,8 @@ nmap <S-J> <C-W>j
 nmap <S-K> <C-W>k
 nmap <S-L> <C-W>l
 
+" Enable matchit script (comes by default with vim)
+source $VIMRUNTIME/macros/matchit.vim
 
 " ---PYTHON--- "
 
@@ -110,3 +112,9 @@ let g:pymode_rope = 0
 
 " Enable pymode syntax
 let g:pymode_syntax = 1
+
+
+"" MATLAB ""
+" Enable mlint
+autocmd BufEnter *.m compiler mlint
+
