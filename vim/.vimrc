@@ -90,7 +90,7 @@ let g:pymode_motion = 1
 let g:pymode_doc = 1
 
 " Bind key to show documentation for current word
-let g:pymode_doc_bind = 'K'
+let g:pymode_doc_bind = 'M'
 
 " Disable run code script (for the moment) 
 let g:pymode_run = 0
