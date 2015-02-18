@@ -38,6 +38,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Make backspace work properly in INSERT mode
+set backspace=2
+
 " Set solarized colorscheme
 set background=dark
 colorscheme solarized
