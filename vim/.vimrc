@@ -1,7 +1,36 @@
-" Enable pathogen
-call pathogen#infect()
-call pathogen#helptags()
+" Set improved mode
+set nocompatible
 
+" Turn filetype off (required to enable Vundle)
+filetype off
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Include plugins here
+" Powerline
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Nerdtree
+Bundle 'scrooloose/nerdtree'
+
+" Python mode
+Bundle 'klen/python-mode'
+
+" Jedi VIM (python autocompleter)
+Bundle 'davidhalter/jedi-vim'
+
+" End plugins
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" End of vundle configuration
+
+"" General VIM ""
 " Set syntax highlighting
 syntax on 
 
@@ -17,6 +46,10 @@ set wildmenu
 " Make search only sensitive to capital letters
 set ignorecase
 set smartcase
+
+" Make splits the regular way
+set splitright
+set splitbelow
 
 " Activate autoindent
 set autoindent
@@ -42,8 +75,8 @@ set expandtab
 set backspace=2
 
 " Set solarized colorscheme
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 " Map shift + h,j,k,l to navigate splits 
 nmap <S-H> <C-W>h
@@ -54,14 +87,9 @@ nmap <S-L> <C-W>l
 " Enable matchit script (comes by default with vim)
 source $VIMRUNTIME/macros/matchit.vim
 
-" ---PYTHON--- "
+"" END GENERAL VIM ""
 
-" --Jedi-vim options-- "
-
-" Disable autocompletion on dot for jedi-vim
-let g:jedi#popup_on_dot = 0
-"
-" -------------------- "
+"" PYTHON ""
 
 " --Python-mode options-- "
 
@@ -69,7 +97,7 @@ let g:jedi#popup_on_dot = 0
 let g:pymode = 1
 
 " Trim unused whitespaces on save
-let g:pymode_trim_whitespaces = 1
+" let g:pymode_trim_whitespaces = 1
 
 " Setup default python-mode options
 let g:pymode_options = 1
@@ -93,7 +121,7 @@ let g:pymode_motion = 1
 let g:pymode_doc = 1
 
 " Bind key to show documentation for current word
-let g:pymode_doc_bind = 'M'
+let g:pymode_doc_bind = '<F3>'
 
 " Disable run code script (for the moment) 
 let g:pymode_run = 0
@@ -101,11 +129,11 @@ let g:pymode_run = 0
 " Disable debugger (for the moment)
 let g:pymode_breakpoint = 0
 
-" Enable code checking
-let g:pymode_lint = 1
+" Disable code checking (for the moment, is causing SEGFAULT)
+let g:pymode_lint = 0
 
-" Check code when saving
-let g:pymode_lint_on_write = 1
+" Disable check code when saving
+let g:pymode_lint_on_write = 0
 
 " Check code on the fly
 let g:pymode_lint_on_fly = 1
@@ -113,11 +141,14 @@ let g:pymode_lint_on_fly = 1
 " Disable rope script (I am using jedi-vim)
 let g:pymode_rope = 0
 
-" Enable pymode syntax
-let g:pymode_syntax = 1
+" Disable pymode syntax (for the moment)
+let g:pymode_syntax = 0
 
 
 "" MATLAB ""
 " Enable mlint
-autocmd BufEnter *.m compiler mlint
+" autocmd BufEnter *.m compiler mlint
 
+"" NerdTree ""
+" Map it to F2
+map <F2> :NERDTreeToggle<CR>
