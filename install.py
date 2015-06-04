@@ -1,10 +1,14 @@
 #!/usr/bin/python
+"""
+    install.py
+    ~~~~~~~~~~
+
+    Script to install dotfiles
+"""
 from __future__ import print_function
 import shutil
 import os
-"""
-  Script to install dotfiles in their proper locations
-"""
+
 
 def install():
 
@@ -24,6 +28,7 @@ def install():
   print('Done')
 
   print('All dotfiles installed!')
+
 
 if __name__=='__main__':
   install()
