@@ -1,38 +1,23 @@
-" Set improved mode
-set nocompatible
-
-" Turn filetype off (required to enable Vundle)
-filetype off
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Include plugins here
-" Powerline
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-" Nerdtree
-Bundle 'scrooloose/nerdtree'
-
-" Python mode
-Bundle 'klen/python-mode'
-
-" Jedi VIM (python autocompleter)
-Bundle 'davidhalter/jedi-vim'
-
-" End plugins
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-" End of vundle configuration
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+"
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
+Plug 'davidhalter/jedi-vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tmhedberg/SimpylFold'
+Plug 'cjrh/vim-conda'
+call plug#end()
 
 "" General VIM ""
 " Set syntax highlighting
-syntax on 
+syntax on
 
 " Set improved mode
 set nocompatible
@@ -71,84 +56,23 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Set column limit
+set colorcolumn=80
+
 " Make backspace work properly in INSERT mode
 set backspace=2
 
-" Set solarized colorscheme
-" set background=dark
-" colorscheme solarized
+" Set colorscheme
+colorscheme monokai
 
-" Map shift + h,j,k,l to navigate splits 
-nmap <S-H> <C-W>h
-nmap <S-J> <C-W>j
-nmap <S-K> <C-W>k
-nmap <S-L> <C-W>l
+"" NerdTREE ""
+" Start NERDTree
+autocmd VimEnter * NERDTree
+" Jump to the main window.
+autocmd VimEnter * wincmd p
 
-" Enable matchit script (comes by default with vim)
-source $VIMRUNTIME/macros/matchit.vim
+" Ignore .pyc files
+let NERDTreeIgnore = ['\.pyc$']
 
-"" END GENERAL VIM ""
-
-"" PYTHON ""
-
-" --Python-mode options-- "
-
-" Enable python-mode "
-let g:pymode = 1
-
-" Trim unused whitespaces on save
-" let g:pymode_trim_whitespaces = 1
-
-" Setup default python-mode options
-let g:pymode_options = 1
-
-" Setup max line length
-let g:pymoe_options_max_line_length = 79
-
-" Color columns at max line length
-let g:pymode_options_colorcolumn = 1
-
-" Enable pymode indentation
-let g:pymode_indent = 1
-
-" Disable pymode folding (for the moment) 
-let g:pymode_folding = 0
-
-" Disable pymode-motion (for the moment)
-let g:pymode_motion = 1
-
-" Enable pymode documentation plugin
-let g:pymode_doc = 1
-
-" Bind key to show documentation for current word
-let g:pymode_doc_bind = '<F3>'
-
-" Disable run code script (for the moment) 
-let g:pymode_run = 0
-
-" Disable debugger (for the moment)
-let g:pymode_breakpoint = 0
-
-" Disable code checking (for the moment, is causing SEGFAULT)
-let g:pymode_lint = 0
-
-" Disable check code when saving
-let g:pymode_lint_on_write = 0
-
-" Check code on the fly
-let g:pymode_lint_on_fly = 1
-
-" Disable rope script (I am using jedi-vim)
-let g:pymode_rope = 0
-
-" Disable pymode syntax (for the moment)
-let g:pymode_syntax = 0
-
-
-"" MATLAB ""
-" Enable mlint
-" autocmd BufEnter *.m compiler mlint
-
-"" NerdTree ""
-" Map it to F2
-map <F2> :NERDTreeToggle<CR>
+"" Airline "" 
+let g:airline_theme='minimalist'
