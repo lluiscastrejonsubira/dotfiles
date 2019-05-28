@@ -3,21 +3,47 @@
 " - Avoid using standard Vim directory names like 'plugin'
 "
 call plug#begin('~/.nvim/plugged')
+
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
-Plug 'edkolev/tmuxline.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tmhedberg/SimpylFold'
-Plug 'cjrh/vim-conda'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'sonph/onehalf'
-" Plug 'davidhalter/jedi-vim'
-Plug 'davidhalter/jedi'
-Plug 'joshdick/onedark.vim'
-" Plug 'zchee/deoplete-jedi'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/echodoc.vim'
+
+" Better folding
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+
+" Anaconda environments support
+Plug 'cjrh/vim-conda'
+
+" Python autocomplete
+Plug 'davidhalter/jedi'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'zchee/deoplete-jedi'
+"
+" Git support
+Plug 'tpope/vim-fugitive'
+
+" Comment shortcut
+Plug 'tpope/vim-commentary'
+
+" Surround words
+Plug 'tpope/vim-surround'
+
+" Better syntax
+Plug 'sheerun/vim-polyglot'
+
+" Vim Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+
+" Colorschemes
+Plug 'sonph/onehalf'
+Plug 'joshdick/onedark.vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 " LCN
 Plug 'autozimu/LanguageClient-neovim', {
@@ -94,10 +120,13 @@ set colorcolumn=80
 set backspace=2
 
 " Set colorscheme
+set background=light
 " colorscheme monokai
 " colorscheme neodark
 " colorscheme onehalfdark
 colorscheme onedark
+" colorscheme github
+" colorscheme PaperColor
 
 "" NerdTREE
 " Start NERDTree
@@ -111,6 +140,11 @@ let NERDTreeIgnore = ['\.pyc$']
 "" Airline "" 
 " let g:airline_theme='minimalist'
 let g:airline_theme='onedark'
+" let g:airline_theme="github"
+
+" Python folds
+let g:SimpylFold_fold_import = 0
+
 
 "" Vim-conda
 let g:conda_startup_msg_suppress = 1
